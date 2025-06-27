@@ -24,7 +24,7 @@ for(int i = 0; i < n; i++)
 
 > ### Time Complexity
 
-> ![](<https://latex.codecogs.com/svg.image?O(n^2)>)
+> - ![](<https://latex.codecogs.com/svg.image?O(n^2)>)
 
 </details>
 
@@ -52,7 +52,7 @@ for(int i = 0; i < n; i++)
 
 > ### Time Complexity
 
-> ![Time Complexity](<https://latex.codecogs.com/svg.image?O(n^2)>)
+> - ![Time Complexity](<https://latex.codecogs.com/svg.image?O(n^2)>)
 
 </details>
 
@@ -86,7 +86,7 @@ for(int i = 1; i < n; i*=2)
 
 > ### Time Complexity
 
-> ![Time Complexity](<https://latex.codecogs.com/svg.image?O(n\log&space;n)>)
+> - ![Time Complexity](<https://latex.codecogs.com/svg.image?O(n\log&space;n)>)
 
 </details>
 
@@ -121,7 +121,7 @@ for(int i = 0; i < n; i++)
 
 > ### Time Complexity
 
-> ![Time Complexity](<https://latex.codecogs.com/svg.image?O(n\log&space;n)>)
+> - ![Time Complexity](<https://latex.codecogs.com/svg.image?O(n\log&space;n)>)
 
 </details>
 
@@ -162,7 +162,7 @@ for(int i = 1; i < n; i*=2)
 
 > ### Time Complexity
 
-> ![Time Complexity](<https://latex.codecogs.com/svg.image?&space;O(\log^2n)>)
+> - ![Time Complexity](<https://latex.codecogs.com/svg.image?&space;O(\log^2n)>)
 
 </details>
 
@@ -180,23 +180,23 @@ for(int i = n; i > 0; i/=2)
 <details>
 <summary><strong>Solution</strong></summary>
 
+> ### Analysis
+
 > - The loop runs `i = n, n/2, n/4, n/8` and stops when `i == 0`
 
 > ![](https://latex.codecogs.com/svg.image?\frac{n}{2^k}\ge&space;1\implies&space;n\ge&space;2^{k})
 
 > ![](https://latex.codecogs.com/svg.image?k\leq&space;\log_{2}{n})
 
-> ![](https://latex.codecogs.com/svg.image?\textup{when&space;loop&space;terminates})
+> - When loop terminates
 
 > ![](https://latex.codecogs.com/svg.image?k=\log_{2}{n}+1)
 
-> ![](https://latex.codecogs.com/svg.image?k\approx&space;\log_{2}{n}&space;)
-
-> ![Total iterations](https://latex.codecogs.com/svg.image?\text{Total&space;iteration}=\log{n})
+> ![Total iterations](https://latex.codecogs.com/svg.image?\text{Total&space;iteration}\approx\log{n})
 
 > ### Time Complexity
 
-> ![Time Complexity](<https://latex.codecogs.com/svg.image?&space;O(\log{n})>)
+> - ![Time Complexity](<https://latex.codecogs.com/svg.image?&space;O(\log{n})>)
 
 </details>
 
