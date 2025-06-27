@@ -13,18 +13,20 @@ for(int i = 0; i < n; i++)
 ```
 
 <details>
-<summary><strong>Solution</strong></summary>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
 
 > - The outer loop runs `i` from `0` to `n - 1` → `n` iterations.
 > - The inner loop runs `j` from `i` to `n - 1` → `n - i` iterations for each `i`.
 
 > So, the total number of calls to `foo()` is:
 
-> ![Total iterations](<https://latex.codecogs.com/svg.image?\sum_{i=0}^{n-1}(n-i)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}>)
+> ![Total iterations](https://latex.codecogs.com/svg.image?\sum_{i=0}^{n-1}(n-i)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2})
 
-> ### Time Complexity
+> **Time Complexity**
 
-> - ![](<https://latex.codecogs.com/svg.image?O(n^2)>)
+> - ![](https://latex.codecogs.com/svg.image?O(n^2))
 
 </details>
 
@@ -41,18 +43,20 @@ for(int i = 0; i < n; i++)
 ```
 
 <details>
-<summary><strong>Solution</strong></summary>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
 
 > - The outer loop runs `i` from `0` to `n - 1` → `n` iterations.
 > - The inner loop runs `j` from `0` to `i` → `i` iterations for each `i`.
 
 > So, the total number of calls to `foo()` is:
 
-> ![Total iterations](<https://latex.codecogs.com/svg.image?\sum_{i=0}^{n-1}i=0+1+2+...+(n-1)=\frac{n(n+1)}{2}>)
+> ![Total iterations](https://latex.codecogs.com/svg.image?\sum_{i=0}^{n-1}i=0+1+2+...+(n-1)=\frac{n(n+1)}{2})
 
-> ### Time Complexity
+> **Time Complexity**
 
-> - ![Time Complexity](<https://latex.codecogs.com/svg.image?O(n^2)>)
+> - ![Time Complexity](https://latex.codecogs.com/svg.image?O(n^2))
 
 </details>
 
@@ -69,7 +73,9 @@ for(int i = 1; i < n; i*=2)
 ```
 
 <details>
-<summary><strong>Solution</strong></summary>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
 
 > - The outer loop runs `i = 1, 2, 4, 8` and stops when `i >= n`
 
@@ -84,9 +90,9 @@ for(int i = 1; i < n; i*=2)
 
 > ![Total iterations](https://latex.codecogs.com/svg.image?\text{Total&space;iterations}=n\cdot\log_2&space;n&space;)
 
-> ### Time Complexity
+> **Time Complexity**
 
-> - ![Time Complexity](<https://latex.codecogs.com/svg.image?O(n\log&space;n)>)
+> - ![Time Complexity](https://latex.codecogs.com/svg.image?O(n\log&space;n))
 
 </details>
 
@@ -103,7 +109,9 @@ for(int i = 0; i < n; i++)
 ```
 
 <details>
-<summary><strong>Solution</strong></summary>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
 
 > - The outer loop runs `i` from `0` to `n-1` → `n` iterations
 
@@ -119,9 +127,9 @@ for(int i = 0; i < n; i++)
 
 > ![Total iterations](https://latex.codecogs.com/svg.image?\text{Total&space;iterations}=n\cdot\log_2&space;n&space;)
 
-> ### Time Complexity
+> **Time Complexity**
 
-> - ![Time Complexity](<https://latex.codecogs.com/svg.image?O(n\log&space;n)>)
+> - ![Time Complexity](https://latex.codecogs.com/svg.image?O(n\log&space;n))
 
 </details>
 
@@ -138,7 +146,9 @@ for(int i = 1; i < n; i*=2)
 ```
 
 <details>
-<summary><strong>Solution</strong></summary>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
 
 > - The outer loop runs `i = 1, 2, 4, 8` and stops when `i >= n`
 
@@ -160,9 +170,9 @@ for(int i = 1; i < n; i*=2)
 
 > ![Total iterations](https://latex.codecogs.com/svg.image?\text{Total&space;iteration}=\log_2n\cdot&space;\log_2n)
 
-> ### Time Complexity
+> **Time Complexity**
 
-> - ![Time Complexity](<https://latex.codecogs.com/svg.image?&space;O(\log^2n)>)
+> - ![Time Complexity](https://latex.codecogs.com/svg.image?&space;O(\log^2n))
 
 </details>
 
@@ -178,9 +188,9 @@ for(int i = n; i > 0; i/=2)
 ```
 
 <details>
-<summary><strong>Solution</strong></summary>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
 
-> ### Analysis
+> **Analysis**
 
 > - The loop runs `i = n, n/2, n/4, n/8` and stops when `i == 0`
 
@@ -194,7 +204,7 @@ for(int i = n; i > 0; i/=2)
 
 > ![Total iterations](https://latex.codecogs.com/svg.image?\text{Total&space;iteration}\approx\log{n})
 
-> ### Time Complexity
+> **Time Complexity**
 
 > - ![Time Complexity](<https://latex.codecogs.com/svg.image?&space;O(\log{n})>)
 
