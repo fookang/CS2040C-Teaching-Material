@@ -184,8 +184,7 @@ for(int i = n; i > 0; i/=2)
 
 > - The loop runs `i = n, n/2, n/4, n/8` and stops when `i == 0`
 
-> ![](https://latex.codecogs.com/svg.image?\frac{n}{2^k}\ge&space;1\implies&space;n\ge&space;2^{k})
-> ![](https://latex.codecogs.com/svg.image?k\leq&space;\log_{2}{n})
+> ![](https://latex.codecogs.com/svg.image?\frac{n}{2^k}\ge&space;1\implies&space;n\ge&space;2^{k}) > ![](https://latex.codecogs.com/svg.image?k\leq&space;\log_{2}{n})
 
 > - When loop terminates
 
@@ -258,11 +257,9 @@ for(int i = n; i > 0; i/=2)
 
 > - The loop runs `i = n, n/2, n/4, n/8` and stops when `i == 0`
 
-> ![](https://latex.codecogs.com/svg.image?\frac{n}{2^k}\ge&space;1\implies&space;n\ge&space;2^{k})
-> ![](https://latex.codecogs.com/svg.image?k\leq&space;\log_{2}{n})
-
-> - Hence the outer loop run for approximately `lgn` times
-
+> ![](https://latex.codecogs.com/svg.image?\frac{n}{2^k}\ge&space;1\implies&space;n\ge&space;2^{k}) > ![](https://latex.codecogs.com/svg.image?k\leq&space;\log_{2}{n})
+>
+> - Hence the outer loop run for approximately &nbsp; ![](https://latex.codecogs.com/svg.image?log_2n) &nbsp; times
 > - For the inner loop, it is the same as the outer loop
 
 > ![Total iterations](https://latex.codecogs.com/svg.image?\text{Total&space;iteration}=\log_2n\cdot&space;\log_2n)
@@ -292,11 +289,9 @@ for(int i = n; i > 0; i/=2)
 
 > - The loop runs i = n, n/2, n/4, n/8 and stops when i == 0
 
-> ![](https://latex.codecogs.com/svg.image?\frac{n}{2^k}\ge&space;1\implies&space;n\ge&space;2^{k})
-> ![](https://latex.codecogs.com/svg.image?k\leq&space;\log_{2}{n})
+> ![](https://latex.codecogs.com/svg.image?\frac{n}{2^k}\ge&space;1\implies&space;n\ge&space;2^{k}) > ![](https://latex.codecogs.com/svg.image?k\leq&space;\log_{2}{n})
 
-> - Hence the outer loop run for approximately lgn times
-
+> - Hence the outer loop run for approximately &nbsp; ![](https://latex.codecogs.com/svg.image?log_2n) &nbsp; times
 > - The inner loop runs for n iteration for each outer loop
 
 > ![Total iterations](https://latex.codecogs.com/svg.image?\text{Total&space;iterations}=n\cdot\log_2&space;n&space;)
@@ -304,6 +299,50 @@ for(int i = n; i > 0; i/=2)
 > **Time Complexity**
 
 > - ![Time Complexity](<https://latex.codecogs.com/svg.image?O(n\log&space;n)>)
+
+</details>
+
+---
+
+## Question 10
+
+> **What is the time complexity of this code?**
+
+```C++
+for(int i = n; i > 0; i/=2)
+  for(int j = i; j > 0; j/=2)
+    foo();
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+
+> - The outer loop runs `i = n, n/2, n/4, n/8` and stops when `i == 0`
+
+> ![](https://latex.codecogs.com/svg.image?\frac{n}{2^k}\ge&space;1\implies&space;n\ge&space;2^{k}) > ![](https://latex.codecogs.com/svg.image?k\leq&space;\log_{2}{n})
+
+> - Hence the outer loop run for approximately &nbsp; ![](https://latex.codecogs.com/svg.image?log_2n) &nbsp; times
+
+> - For the inner loop, j starts at i and was half each time. Hence the inner loop run for approximately &nbsp; ![](https://latex.codecogs.com/svg.image?log_2i) &nbsp;
+
+> - We can thus form the equation for time complexity
+>   ![](<https://latex.codecogs.com/svg.image?T(n)=\sum_{\text{outer&space;iteraration}}log_2i>)
+>   ![](<https://latex.codecogs.com/svg.image?T(n)=log_2n+\frac{log_2n}{2}+\frac{log_2n}{4}+...+log_21>)
+>   ![](<https://latex.codecogs.com/svg.image?T(n)=log_2n+(log_2n-log_22)+(log_2n-log_22^2)+...+0>)
+>   ![](<https://latex.codecogs.com/svg.image?T(n)=log_2n+(log_2n-1)+(log_2n-2)+...+0>)
+>   ![](<https://latex.codecogs.com/svg.image?T(n)=\sum_{0}^{log_2n}{(log_2n-k)}>)
+>   ![](<https://latex.codecogs.com/svg.image?T(n)=\sum_{0}^{log_2n}{log_2n}-\sum_{0}^{log_2n}{k}>)
+>   ![](<https://latex.codecogs.com/svg.image?T(n)={log_2n}\cdot{log_2n}-{log_2n}\cdot\frac{(log_2n+1)}{2}>)
+>   ![](<https://latex.codecogs.com/svg.image?T(n)={log_2n}\cdot{log_2n}-\frac{log_2n\cdot&space;log_2n}{2}-\frac{log_2n}{2}>)
+>   ![](<https://latex.codecogs.com/svg.image?T(n)=\frac{log_2n\cdot&space;log_2n}{2}-\frac{log_2n}{2}>)
+>   ![](<https://latex.codecogs.com/svg.image?T(n)\approx&space;O(\log{n}\cdot\log{n})>)
+
+
+> **Time Complexity**
+
+> - ![Time Complexity](<https://latex.codecogs.com/svg.image?&space;O(\log^2n)>)
 
 </details>
 
