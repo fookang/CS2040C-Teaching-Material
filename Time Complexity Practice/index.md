@@ -184,7 +184,8 @@ for(int i = n; i > 0; i/=2)
 
 > - The loop runs `i = n, n/2, n/4, n/8` and stops when `i == 0`
 
-> ![](https://latex.codecogs.com/svg.image?\frac{n}{2^k}\ge&space;1\implies&space;n\ge&space;2^{k}) > ![](https://latex.codecogs.com/svg.image?k\leq&space;\log_{2}{n})
+> ![](https://latex.codecogs.com/svg.image?\frac{n}{2^k}\ge&space;1\implies&space;n\ge&space;2^{k})
+> ![](https://latex.codecogs.com/svg.image?k\leq&space;\log_{2}{n})
 
 > - When loop terminates
 
@@ -221,7 +222,7 @@ for(int i = n; i > 0; i/=2)
 >   ![](<https://latex.codecogs.com/svg.image?T(n)=\sum_{i=n,\frac{n}{2},\frac{n}{4},...,1}{}{(n-i)}>)
 > - From question 6, We know that &nbsp;&nbsp;![](https://latex.codecogs.com/svg.image?i=\frac{n}{2^k}) &nbsp;&nbsp; and k ranges from `0` to `logn`
 > - We can therefore simplify the formula to
->   ![](<https://latex.codecogs.com/svg.image?&space;T(n)=\sum_{k=0}^{\log&space;n}\left(n-\frac{n}{2^k}\right)=n\sum_{k=0}^{\log&space;n}\left(1-\frac{1}{2^k}\right)>) > ![](<https://latex.codecogs.com/svg.image?T(n)=n\sum_{k=0}^{\log&space;n}{1}+n\sum_{k=0}^{\log&space;n}{\frac{1}{2^k}}>)
+>   ![](<https://latex.codecogs.com/svg.image?&space;T(n)=\sum_{k=0}^{\log&space;n}\left(n-\frac{n}{2^k}\right)=n\sum_{k=0}^{\log&space;n}\left(1-\frac{1}{2^k}\right)>) > ![](<https://latex.codecogs.com/svg.image?T(n)=n\sum_{k=0}^{\log&space;n}{1}-n\sum_{k=0}^{\log&space;n}{\frac{1}{2^k}}>)
 
 > For the first part of the equation
 > ![](<https://latex.codecogs.com/svg.image?T(n)=n\sum_{k=0}^{\log&space;n}{1}=n\cdot(\log&space;n+1)>)
@@ -231,6 +232,74 @@ for(int i = n; i > 0; i/=2)
 
 > Hence we can safely ignore the second part of the equation and conclude that
 > ![](<https://latex.codecogs.com/svg.image?T(n)=n\cdot\log&space;n&space;>)
+
+> **Time Complexity**
+
+> - ![Time Complexity](<https://latex.codecogs.com/svg.image?O(n\log&space;n)>)
+
+</details>
+
+---
+
+## Question 8
+
+> **What is the time complexity of this code?**
+
+```C++
+for(int i = n; i > 0; i/=2)
+  for(int j = n; j > 0; j/=2)
+    foo();
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+
+> - The loop runs `i = n, n/2, n/4, n/8` and stops when `i == 0`
+
+> ![](https://latex.codecogs.com/svg.image?\frac{n}{2^k}\ge&space;1\implies&space;n\ge&space;2^{k})
+> ![](https://latex.codecogs.com/svg.image?k\leq&space;\log_{2}{n})
+
+> - Hence the outer loop run for approximately `lgn` times
+
+> - For the inner loop, it is the same as the outer loop
+
+> ![Total iterations](https://latex.codecogs.com/svg.image?\text{Total&space;iteration}=\log_2n\cdot&space;\log_2n)
+
+> **Time Complexity**
+
+> - ![Time Complexity](<https://latex.codecogs.com/svg.image?&space;O(\log^2n)>)
+
+</details>
+
+---
+
+## Question 9
+
+> **What is the time complexity of this code?**
+
+```C++
+for(int i = n; i > 0; i/=2)
+  for(int j = 0; j < n; j++)
+    foo();
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+
+> - The loop runs i = n, n/2, n/4, n/8 and stops when i == 0
+
+> ![](https://latex.codecogs.com/svg.image?\frac{n}{2^k}\ge&space;1\implies&space;n\ge&space;2^{k})
+> ![](https://latex.codecogs.com/svg.image?k\leq&space;\log_{2}{n})
+
+> - Hence the outer loop run for approximately lgn times
+
+> - The inner loop runs for n iteration for each outer loop
+
+> ![Total iterations](https://latex.codecogs.com/svg.image?\text{Total&space;iterations}=n\cdot\log_2&space;n&space;)
 
 > **Time Complexity**
 
