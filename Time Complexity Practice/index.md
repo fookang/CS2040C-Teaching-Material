@@ -1,5 +1,3 @@
-<!-- markdownlint-disable MD033 -->
-
 # Time complexity Practice
 
 ---
@@ -705,13 +703,13 @@ for(int i = 0; i < n; i++)
 >
 > $= \frac{1}{2}[\frac{(n-1)n(2n-1)}{6} - \frac{(n-1)(n)}{2}]$
 >
-> $ = \frac{n(n-1)}{2}[\frac{2n-1}{6} - \frac{1}{2}]$
+> $= \frac{n(n-1)}{2}[\frac{2n-1}{6} - \frac{1}{2}]$
 >
-> $ = \frac{n(n-1)}{2}[\frac{2n-1}{6} - \frac{3}{6}]$
+> $= \frac{n(n-1)}{2}[\frac{2n-1}{6} - \frac{3}{6}]$
 >
-> $ = \frac{n(n-1)}{2}[\frac{n-2}{3}]$
+> $= \frac{n(n-1)}{2}[\frac{n-2}{3}]$
 >
-> $ = \frac{n(n-1)(n-2)}{6}$
+> $= \frac{n(n-1)(n-2)}{6}$
 >
 > **Time Complexity**
 >
