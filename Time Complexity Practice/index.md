@@ -718,3 +718,195 @@ for(int i = 0; i < n; i++)
 </details>
 
 ---
+
+## Question 21
+
+> **What is the time complexity of this code?**
+
+```C++
+for(int i = 0; i*i < n; i++)
+  foo()
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+>
+> - The loop starts at i = 0 and stops when $i \times i \geq n$
+> - Hence the loop stops when $i = \lfloor\sqrt{n}\rfloor$
+> - $\text{Total iteration} = \lfloor\sqrt{n}\rfloor + 1 \approx \sqrt{n}$
+>
+> **Time Complexity**
+>
+> - $O(\sqrt{n})$
+
+</details>
+
+---
+
+## Question 22
+
+> **What is the time complexity of this code?**
+
+```C++
+for(int i = 0; i*i*i < n; i++)
+  foo()
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+>
+> - The loop starts at i = 0 and stops when $i \times i \times i \geq n$
+> - Hence the loop stops when $i = \lfloor\sqrt[3]{n}\rfloor$
+> - $\text{Total iteration} = \lfloor\sqrt[3]{n}\rfloor + 1 \approx \sqrt[3]{n}$
+>
+> **Time Complexity**
+>
+> - $O(\sqrt[3]{n})$
+
+</details>
+
+---
+
+## Question 23
+
+> **What is the time complexity of this code?**
+
+```C++
+for(int i = 0; i*i < n; i++)
+  for(int j = 0; j*j < n; j++)
+    foo()
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+>
+> - The outer loop runs while $i^2 < n$, so i goes from 0 to $\lfloor \sqrt{n} \rfloor$ → $\sqrt{n}$ iterations
+> - The inner loop runs while $j^2 < n$, so j goes from 0 to $\lfloor \sqrt{n} \rfloor$ → $\sqrt{n}$ iterations
+> - Time complexity will be $O(\sqrt{n}) \times O(\sqrt{n}) = O(n)$
+>
+> **Time Complexity**
+>
+> - $O(n)$
+
+</details>
+
+---
+
+## Question 24
+
+> **What is the time complexity of this code?**
+
+```C++
+for(int i = 0; i*i < n; i++)
+  for(int j = 0; j < i; j++)
+    foo()
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+>
+> - The outer loop runs while $i^2 < n$, so i goes from 0 to $\lfloor \sqrt{n} \rfloor$ → $\sqrt{n}$ iterations
+> - The inner loop runs from `j = 0` to `j < i` → `i` iterations for each value of i
+> - $\text{Total iteration} = 0 + 1 + 2 + ... + \sqrt{n}$
+>
+> $\sum_{i=0}^{\sqrt{n}}i = \frac{(\sqrt{n})(\sqrt{n} + 1)}{2} = \frac{n + \sqrt{n}}{2}$
+>
+> **Time Complexity**
+>
+> - $O(n)$
+
+</details>
+
+---
+
+## Question 25
+
+> **What is the time complexity of this code?**
+
+```C++
+for(int i = 0; i < n; i++)
+  if(i % 2 == 0)
+    for(int j = 0; j < n; j++)
+      foo()
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+>
+> - The outer loop runs from `i = 0` to `i < n` → `n` iterations
+> - The inner loop runs from `j = 0` to `j < n` → `n` iterations
+> - However the inner loop will only execute for half the value of i
+> - $\text{Total iteration} = \frac{n}{2} \times n = O(n^2)$
+>
+> **Time Complexity**
+>
+> - $O(n^2)$
+
+</details>
+
+---
+
+## Question 26
+
+> **What is the time complexity of this code?**
+
+```C++
+for(int i = 0; i < n; i++)
+  if(i % 2 == 0)
+    for(int j = 0; j < i; j++)
+      foo()
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+>
+> - The outer loop runs from `i = 0` to `i < n` → `n` iterations
+> - The inner loop runs from `j = 0` to `j < i` → `i` iterations for each value of i
+> - However the inner loop will only execute for half the value of i
+>   $\text{Total iteration} = 2 + 4 + 6 + ... + n$ <br><br>
+> - Case 1: If n is even
+>   $\text{Total iteration} = 2 + 4 + 6 + ... + n$
+>
+>   $= 2(1 + 2 + 3 + ... + \frac{n}{2})$
+>
+>   $= 2 \times \frac{(\frac{n}{2})(\frac{n}{2} + 1)}{2}$
+>
+>   $= \frac{n^2}{4} + \frac{n}{2}$
+>
+>   $= \frac{n(n+2)}{4}$ <br><br>
+>
+> - Case 2: If n is odd
+>
+>   $\text{Total iteration} = 2 + 4 + 6 + ... + (n-1)$
+>
+>   $= 2(1 + 2 + 3 + ... + \frac{n-1}{2})$
+>
+>   $= 2 \times \frac{(\frac{n-1}{2})(\frac{n-1}{2} + 1)}{2}$
+>
+>   $= \frac{n-1}{2}(\frac{n-1}{2} + \frac{2}{2})$
+>
+>   $= \frac{(n-1)(n+1)}{4}$
+>
+>   $= \frac{n^2 - 1}{4}$ <br><br>
+>
+> - Both cases give us the same time complexity of $O(n^2)$
+>
+> **Time Complexity**
+>
+> - $O(n^2)$
+
+</details>
+
+---
