@@ -910,3 +910,415 @@ for(int i = 0; i < n; i++)
 </details>
 
 ---
+
+## Question 27
+
+> **What is the time complexity of this code?**
+
+```C++
+for(int i = 1; i <= n; i++)
+  for(int j = 1; j <= n; j+=i)
+    foo()
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+>
+> - The outer loop runs from `i = 1` to `i <= n` → `n` iterations
+> - The inner loop runs from `j = 1` to `j <= n` with a step of `i` → $\frac{n}{i}$ iterations for each value of i
+> - Total iterations = $\sum_{i=1}^{n} \frac{n}{i} = n \sum_{i=1}^{n} \frac{1}{i}$
+> - The harmonic series $\sum_{i=1}^{n} \frac{1}{i}$ is $O(\log n)$
+>
+> **Time Complexity**
+>
+> - $O(n \log n)$
+
+</details>
+
+---
+
+## Question 28
+
+> **What is the time complexity of this code?**
+
+```C++
+for(int i = 1; i < n; i*=3)
+  for(int j = 1; j < n; j*=2)
+    foo()
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+>
+> The outer loop runs from $i = 1,3,9,27,...,3^x$ and stop when $i \geq n$ → $log_3{n}$ iterations
+>
+> - The inner loop runs from $j = 1,2,4,8,...,2^y$ and stop when $j \geq n$ → $log_2{n}$ iterations
+> - Total iterations = $\log_3 n \times \log_2 n$
+>
+> **Time Complexity**
+>
+> - $O(\log^2 n)$
+
+</details>
+
+---
+
+## Question 29
+
+> **What is the time complexity of this code?**
+
+```C++
+for(int i = 0; i*i < n; i++)
+  for(int j = 0; j*j < i; j++)
+    foo()
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+>
+> - The outer loop runs while $i^2 < n$, so i goes from 0 to $\lfloor \sqrt{n} \rfloor$ → $\sqrt{n}$ iterations
+> - The inner loop runs while $j^2 < i$, so j goes from 0 to $\lfloor \sqrt{i} \rfloor$ → $\sqrt{i}$ iterations
+> - Total iterations = $\sum_{i=0}^{\sqrt{n}} \sqrt{i}$
+> - This can be approximated by the integral $\int_0^{\sqrt{n}} \sqrt{x} \, dx = \frac{2}{3} n^{3/2}$
+>
+> **Time Complexity**
+>
+> - $O(n^{3/2})$
+
+</details>
+
+---
+
+## Question 30
+
+> **What is the time complexity of this code?**
+
+```C++
+int func(int n) {
+  if (n <= 1) return 1;
+  return n * func(n - 1);
+}
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+>
+> - $T(n) = T(n - 1) + O(1)$
+> - $T(n) = T(n - 2) + O(1) + O(1)$
+> - $T(n) = T(n - 3) + O(1) + O(1) + O(1)$
+> - ...
+> - $T(n) = T(1) + O(n) = O(n)$
+>
+> **Time Complexity**
+>
+> - $O(n)$
+
+</details>
+
+---
+
+## Question 31
+
+> **What is the time complexity of this code?**
+
+```C++
+int func(int n) {
+  if (n <= 0) return 0;
+  return func(n - 1) + func(n - 1);
+}
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+>
+> - $T(n) = 2T(n - 1)+ O(1)$
+> - $T(n) = 2(2T(n - 2) + O(1)) + O(1)$
+> - $T(n) = 4T(n - 2) + 3O(1)$
+> - $T(n) = 4(2T(n - 3) + O(1)) + 3O(1)$
+> - $T(n) = 8T(n - 3) + 7O(1)$
+> - $T(n) = 8(2T(n - 4) + O(1)) + 7O(1)$
+> - $T(n) = 16T(n - 4) + 15O(1)$
+> - ...
+> - $T(n) = 2^k T(n - k) + (2^k - 1)O(1)$
+>
+> - When $n - k = 0$, $k = n$
+> - $T(n) = 2^n T(0) + (2^n - 1)O(1)$
+>
+> **Time Complexity**
+>
+> - $O(2^n)$
+
+</details>
+
+---
+
+## Question 32
+
+> **What is the time complexity of this code?**
+
+```C++
+int func(int n) {
+  if (n <= 1) return n;
+  return func(n - 1) + func(n - 2);
+}
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+>
+> - $T(n) = T(n - 1) + T(n - 2) + O(1)$
+> - $T(n) \leq 2T(n - 1) + O(1)$
+> - $T(n) \leq 2(2T(n - 2) + O(1)) + O(1)$
+> - $T(n) \leq 4T(n - 2) + 3O(1)$
+> - $T(n) \leq 4(2T(n - 3) + O(1)) + 3O(1)$
+> - $T(n) \leq 8T(n - 3) + 7O(1)$
+> - ...
+> - $T(n) = 2^k T(n - k) + (2^k - 1)O(1)$
+>
+> - When $n - k = 1$, $k = n - 1$
+> - $T(n) \leq 2^{n - 1} T(1) + (2^{n - 1} - 1)O(1)$
+>
+> **Time Complexity**
+>
+> - $O(2^n)$
+
+</details>
+
+---
+
+## Question 33
+
+> **What is the time complexity of this code?**
+
+```C++
+int func(int n) {
+  if (n <= 1) return n;
+  return func(n/2) + func(n/2);
+}
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+>
+> - $T(n) = T(n/2) + T(n/2) + O(1)$
+> - $T(n) = 2T(n/2) + O(1)$
+> - $T(n) = 2(2T(n/4) + O(1)) + O(1)$
+> - $T(n) = 4T(n/4) + 3O(1)$
+> - $T(n) = 4(2T(n/8) + O(1)) + 3O(1)$
+> - $T(n) = 8T(n/8) + 7O(1)$
+> - ...
+> - $T(n) = 2^k T(n/2^k) + (2^k - 1)O(1)$
+>
+> - When $n/2^k = 1$, $k = \log_2 n$
+> - $T(n) = 2^{\log_2 n} T(1) + (2^{\log_2 n} - 1)O(1)$
+>
+> **Time Complexity**
+>
+> - $O(n)$
+
+</details>
+
+---
+
+## Question 34
+
+> **What is the time complexity of this code?**
+
+```C++
+int func(int n) {
+  if (n <= 1) return n;
+  return func(n/2);
+}
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+>
+> - $T(n) = T(n/2) + O(1)$
+> - $T(n) = T(n/4) + O(1) + O(1)$
+> - $T(n) = T(n/8) + O(1) + O(1) + O(1)$
+> - $T(n) = T(n/8) + 3O(1)$
+> - ...
+> - $T(n) = T(n/2^k) + kO(1)$
+>
+> - When $n/2^k = 1$, $k = \log_2 n$
+>
+> **Time Complexity**
+>
+> - $O(\log n)$
+
+</details>
+
+---
+
+## Question 35
+
+> **What is the time complexity of this code?**
+
+```C++
+int func(int n) {
+  if (n <= 1) return n;
+  for (int i = 0; i < n; i++)
+    foo();
+  return func(n/2);
+}
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+>
+> - $T(n) = T(n/2) + O(n)$
+> - $T(n) = T(n/4) + O(n/2) + O(n)$
+> - $T(n) = T(n/8) + O(n/4) + O(n/2) + O(n)$
+> - ...
+> - $T(n) = T(n/2^k) + O(n/2^{k-1}) + O(n/2^{k-2}) + ... + O(n)$
+>
+> - When $n/2^k = 1$, $k = \log_2 n$
+>
+> - $T(n) = T(1) + O(n) + O(n/2) + O(n/4) + ... + O(1)$
+> - $T(n) = O(n) + O(n/2) + O(n/4) + ... + O(1)$
+> - $T(n) \approx 2O(n)$
+>
+> **Time Complexity**
+>
+> - $O(n)$
+
+</details>
+
+---
+
+## Question 36
+
+> **What is the time complexity of this code?**
+
+```C++
+int func(int n) {
+  if (n <= 1) return n;
+  for (int i = 0; i < n; i++)
+    foo();
+  return func(n/2) + func(n/2);
+}
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+>
+> - $T(n) = 2T(n/2) + O(n)$
+> - $T(n) = 2(2T(n/4) + O(n/2)) + O(n)$
+> - $T(n) = 4T(n/4) + 2O(n)$
+> - $T(n) = 4(2T(n/8) + O(n/4)) + 2O(n)$
+> - $T(n) = 8T(n/8) + 3O(n)$
+> - ...
+> - $T(n) = 2^k T(n/2^k) + kO(n)$
+>
+> - When $n/2^k = 1$, $k = \log_2 n$
+>
+> **Time Complexity**
+>
+> - $O(n \log n)$
+
+</details>
+
+---
+
+## Question 37
+
+> **What is the time complexity of this code?**
+
+```C++
+int func(int n) {
+  if (n <= 1) return n;
+  return func(n/9) + func(8/9 * n);
+}
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+>
+> - $T(n) = T(n/9) + T(8/9 * n) + O(1)$
+> - $T(n) = T(n/81) + T(8/81 * n) + O(1) + T(8/81 * n) + T(64/81 * n) + O(1) + O(1)$
+> - $T(n) = T(n/81) + 2T(8/81 * n) + T(64/81 * n) + 3O(1)$
+>
+> Let's analyze the pattern more systematically. At each level of recursion:
+>
+> - The fractions $\frac{1}{9} + \frac{8}{9} = 1$, so the total "work" at each level remains proportional to $n$
+> - The recursion continues until the base case is reached
+>
+> The recursion depth is determined by the slower-decreasing branch: $T(8n/9)$
+>
+> - After $k$ levels: $(8/9)^k \cdot n = 1$
+> - Solving: $k = \log_{9/8} n$
+>
+> At each level, the total work is $O(1)$, and there are $O(\log n)$ levels.
+>
+> **Time Complexity**
+>
+> - $O(\log n)$
+
+</details>
+
+---
+
+## Question 38
+
+> **What is the time complexity of this code?**
+
+```C++
+int func(int n) {
+  if (n <= 1) return n;
+  for (int i = 0; i < n; i++)
+    foo();
+  return func(n/9) + func(8/9 * n);
+}
+```
+
+<details>
+<summary><span style="font-size:1.3em;"><strong>Solution</strong></span></summary>
+
+> **Analysis**
+>
+> - $T(n) = T(n/9) + T(8/9 * n) + O(n)$
+> - $T(n) = T(n/81) + T(8/81 * n) + O(n/9) + T(8/81 * n) + T(64/81 * n) + O(8n/9) + O(n)$
+> - $T(n) = T(n/81) + 2T(8/81 * n) + T(64/81 * n) + 2O(n)$
+>
+> Let's analyze the pattern more systematically. At each level of recursion:
+>
+> - The fractions $\frac{1}{9} + \frac{8}{9} = 1$, so the total "work" at each level remains proportional to $n$
+> - The recursion continues until the base case is reached
+>
+> The recursion depth is determined by the slower-decreasing branch: $T(8n/9)$
+>
+> - After $k$ levels: $(8/9)^k \cdot n = 1$
+> - Solving: $k = \log_{9/8} n$
+>
+> At each level, the total work is $O(n)$, and there are $O(\log n)$ levels.
+>
+> **Time Complexity**
+>
+> - $O(n \log n)$
+
+</details>
+
+---
